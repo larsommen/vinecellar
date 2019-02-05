@@ -44,9 +44,9 @@ try:
 #on failure - send error-message-mail
 except Exception as ex:
         error = str(ex)
-        subprocess.call(['python', 'systemalertmail.py', error])
+        subprocess.call(['python', '/home/pi/winecellar/systemalertmail.py', error])
 
 
 # test if limits are compromised - send mail
 if temperature > int(setup.get('temp_limit')) or humidity > int(setup.get('humit_limit')):
-	subprocess.call(['python', "alarm.py", str(temperature), str(humidity)])
+	subprocess.call(['python', "/home/pi/winecellar/alarm.py", str(temperature), str(humidity)])
