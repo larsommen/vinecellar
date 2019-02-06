@@ -29,7 +29,7 @@ body = '<table>'
 
 body += '<tr>'
 
-greating = "Godmorgen " + setup.get('customer_name')
+greating = "<b>Godmorgen " + setup.get('customer_name') + "</b>"
 
 
 body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
@@ -38,7 +38,7 @@ body += "<td></td><td></td></tr><tr>"
 
 if (temperature > float(setup.get('temp_limit'))):
 	body += "<td>Temperaturen er </td><td><font color = 'red'>" + str(round(temperature,2)) + chr(176) +  "C  </font></td>"	
-	alert += 'OBS temperatur!!!'
+	alert += '<b>OBS temperatur!!!</b>'
 else:
 	body += "<td>Temperaturen er </td><td><font color = 'blue'>" + str(round(temperature,2)) + chr(176) +  "C  </font></td>" 
 
@@ -46,7 +46,7 @@ body += '</tr><tr>'
 
 if (humidity > float(setup.get('humit_limit'))):
 	body += "<td>Luftfugtigheden er </td><td><font color = 'red'>" +  str(round(humidity,1)) + "%</font></td>"
-	alert += " OBS Luftfugtighed!!!"
+	alert += "<b> OBS Luftfugtighed!!!</b>"
 else:
 	body += "<td>Luftfugtigheden er </td><td><font color = 'darkgreen'>" +  str(round(humidity,1)) + "%</font></td>"
 
@@ -54,14 +54,15 @@ body += '</tr><tr>'
 body += '<td>'
 
 if (temperature <= float(setup.get('temp_limit')) and humidity <= float(setup.get('humit_limit'))):
-	body += "Alt er fint</td>"
+	alert += "<b>Alt er fint</b></td>"
 
 body += "<td></td><td></td></tr><tr>"
 
-body += alert
+#body += alert
 
 body += '</td><td></tr></table></br></br>'
 
+body += alert
 
 msg = MIMEText(body, 'html')
 msg["From"] = setup.get('from_address')
