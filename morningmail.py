@@ -28,6 +28,14 @@ alert = ''
 body = '<table>'
 
 body += '<tr>'
+
+greating = "Godmorgen " + setup.get('customer_name')
+
+
+body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
+
+body += "<td></td><td></td></tr><tr>"
+
 if (temperature > float(setup.get('temp_limit'))):
 	body += "<td>Temperaturen er </td><td><font color = 'red'>" + str(round(temperature,2)) + chr(176) +  "C  </font></td>"	
 	alert += 'OBS temperatur!!!'
@@ -46,8 +54,9 @@ body += '</tr><tr>'
 body += '<td>'
 
 if (temperature <= float(setup.get('temp_limit')) and humidity <= float(setup.get('humit_limit'))):
-	body += "<td>Alt er fint</td>"
+	body += "Alt er fint</td>"
 
+body += "<td></td><td></td></tr><tr>"
 
 body += alert
 
