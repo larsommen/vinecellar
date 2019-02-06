@@ -1,4 +1,0 @@
-58 6 * * * python /home/pi/winecellar/statusmail.py # statusmail.py will run every morning at 6:58 am
-58 3 * * * python /home/pi/winecellar/morningmail.py # morningmail.py will run every morning at 3:58 am
-*/20 * * * * python /home/pi/winecellar/test.py # test.py wil run every 20 minutes every day of the year
-# (there has to be one more line than the last one - a comment hastag will do)
