@@ -18,7 +18,10 @@ date = commands.getoutput("date")
 
 
 alert = ''
-body = '<table>'
+
+body = "Fra " + setup.get('customer_name')
+
+body += '<table>'
 
 body += '<tr>'
 if (temperature > float(setup.get('temp_limit'))):
