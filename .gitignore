@@ -1,2 +1,2 @@
 # ignore all tmpdata
-tmpdata/
+*tmpdata/
