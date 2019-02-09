@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import get_user_data
+import calculateData
+import mvfile
 import sys
 import commands
 import bme280
-from email.mime.text import MIMEText #to be used to create mail opbject
+from email.mime.text import MIMEText #to be used to create mail object
 from subprocess import Popen, PIPE #to send email via gmail
 
 try:
@@ -23,6 +25,11 @@ setup = get_user_data.getall()
 #set date to current date
 date = commands.getoutput("date")
 
+# get last 24 hours average, minimum and maximum tempreture
+avgtemp, mintemp, maxtemp = calculateData.getStats('/home/pi/winecellar/tmpdata/today.temp')
+
+# get last 24 hours average, minimum and maximum humidity
+avghumid, minhumid, maxhumid = calculateData.getStats('/home/pi/winecellar/tmpdata/today.humid')
 
 alert = ''
 body = '<table>'
@@ -58,11 +65,20 @@ if (temperature <= float(setup.get('temp_limit')) and humidity <= float(setup.ge
 
 body += "<td></td><td></td></tr><tr>"
 
-#body += alert
-
 body += '</td><td></tr></table></br></br>'
 
-body += alert
+body += alert +"<br><br><br>"
+
+body += "<table><tr><td><b>Seneste 24 timers m&aring;linger: </b></td><td><b> Gennemsnit </b></td><td><b> Minimum </b></td><td><b> Maximum </b><td></tr> \
+<tr><td>Temperatur</td><td style='background-color:lightgray'>" + avgtemp + "</td><td>" + mintemp + "</td><td style='background-color:lightgray'>" + maxtemp + "</td></tr>" \
+"<tr><td>Luftfugtighed</td><td>" + avghumid + "</td><td style='background-color:lightgray'>" + minhumid + "</td><td>" + maxhumid + "</td></tr>"  \
++ "</table>"
+
+#move todays tmp temp data file
+mvfile.move("/home/pi/winecellar/tmpdata/today.temp")
+
+#move todays tmp humid data file
+mvfile.move("/home/pi/winecellar/tmpdata/today.humid")
 
 msg = MIMEText(body, 'html')
 msg["From"] = setup.get('from_address')

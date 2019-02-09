@@ -47,6 +47,20 @@ except Exception as ex:
         subprocess.call(['python', '/home/pi/winecellar/systemalertmail.py', error])
 
 
+try:
+	todayTempDataFile = open("/home/pi/winecellar/tmpdata/today.temp", "a+")
+	todayTempDataFile.write(str(temperature) + "\n")
+	todayTempDataFile.close()
+
+	todayHumidDataFile = open("/home/pi/winecellar/tmpdata/today.humid", "a+")
+	todayHumidDataFile.write(str(humidity) + "\n")
+	todayHumidDataFile.close()
+
+except Exception as ex:
+        error = str(ex)
+        subprocess.call(['python', '/home/pi/winecellar/systemalertmail.py', error])
+
+
 # test if limits are compromised - send mail
 if temperature > int(setup.get('temp_limit')) or humidity > int(setup.get('humit_limit')):
 	subprocess.call(['python', "/home/pi/winecellar/alarm.py", str(temperature), str(humidity)])
