@@ -1,2 +1,3 @@
 # ignore all tmpdata
-*tmpdata/
+*tmpdata/*.humid
+*tmpdata/*.temp
