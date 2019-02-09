@@ -1,9 +1,12 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+
 import os
-import datetime
+from datetime import *
 
 def move(filename):
-	weekday = str(datetime.datetime.today().weekday())
-
+	weekdaynumber = datetime.utcnow().isocalendar()[1]
+	weekday = str(weekdaynumber)
 	src = filename
 	dst = filename + weekday
 
