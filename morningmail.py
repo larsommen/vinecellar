@@ -1,6 +1,9 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
+# Send an HTML email with an embedded image and a plain text message for
+# email clients that don't want to display the HTML.
+
 import get_user_data
 import calculateData
 import mvfile
@@ -9,6 +12,12 @@ import commands
 import bme280
 from email.mime.text import MIMEText #to be used to create mail object
 from subprocess import Popen, PIPE #to send email via gmail
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+from email.MIMEImage import MIMEImage
+from subprocess import Popen, PIPE #to send email via gmail
+
+
 
 try:
 	# read data from bme280
@@ -72,18 +81,43 @@ body += alert +"<br><br><br>"
 body += "<table><tr><td><b>Seneste 24 timers m&aring;linger: </b></td><td><b> Gennemsnit </b></td><td><b> Minimum </b></td><td><b> Maximum </b><td></tr> \
 <tr><td>Temperatur</td><td style='background-color:lightgray'>" + avgtemp + "</td><td>" + mintemp + "</td><td style='background-color:lightgray'>" + maxtemp + "</td></tr>" \
 "<tr><td>Luftfugtighed</td><td>" + avghumid + "</td><td style='background-color:lightgray'>" + minhumid + "</td><td>" + maxhumid + "</td></tr>"  \
-+ "</table>"
++ "</table><br><br>"
 
-#move todays tmp temp data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.temp")
 
-#move todays tmp humid data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.humid")
 
-msg = MIMEText(body, 'html')
-msg["From"] = setup.get('from_address')
-msg["To"] = setup.get('customer_mail')
-msg["Bcc"] = setup.get('bcc')
-msg["Subject"] = "Godmorgen fra din vinkælder." + " " + date
+# Create the root message and fill in the from, to, and subject headers
+msgRoot = MIMEMultipart('related')
+msgRoot['Subject'] = "Godmorgen fra din vinkælder." + " " + date 
+msgRoot['From'] = setup.get('from_address') 
+msgRoot['To'] = setup.get('customer_mail')
+msgRoot['Bcc'] = setup.get('bcc')
+msgRoot.preamble = 'This is a multi-part message in MIME format.'
+
+# Encapsulate the plain and HTML versions of the message body in an
+# 'alternative' part, so message agents can decide which they want to display.
+msgAlternative = MIMEMultipart('alternative')
+msgRoot.attach(msgAlternative)
+
+msgText = MIMEText('This is the alternative plain text message.')
+msgAlternative.attach(msgText)
+
+body += '<br><img src="cid:image1"><br>'
+
+
+
+# We reference the image in the IMG SRC attribute by the ID we give it below
+msgText = MIMEText(body, 'html')
+msgAlternative.attach(msgText)
+
+# This example assumes the image is on the described path
+fp = open('/home/pi/winecellar/img/today.png', 'rb')
+msgImage = MIMEImage(fp.read())
+fp.close()
+
+# Define the image's ID as referenced above
+msgImage.add_header('Content-ID', '<image1>')
+msgRoot.attach(msgImage)
+
+# Send the email
 p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE, universal_newlines=True)
-p.communicate(msg.as_string())
+p.communicate(msgRoot.as_string())
