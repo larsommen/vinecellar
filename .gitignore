@@ -1,4 +1,4 @@
 # ignore all tmpdata
-*tmpdata/*.humid
-*tmpdata/*.temp
+*tmpdata/*.humid*
+*tmpdata/*.temp*
 *img/*.png
