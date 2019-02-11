@@ -45,7 +45,7 @@ body = '<table>'
 
 body += '<tr>'
 
-greating = "<b>Godmorgen " + setup.get('customer_name') + "</b>"
+greating = "<H1>Godmorgen " + setup.get('customer_name') + "</H1><b>Her er seneste data fra din vink&aelig;lder  </b>"
 
 
 body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
@@ -105,7 +105,7 @@ msgRoot.attach(msgAlternative)
 msgText = MIMEText('This is the alternative plain text message.')
 msgAlternative.attach(msgText)
 
-body += '<br><img src="cid:image1"><br>'
+body += '<br><img src="cid:image1"><br><br><object align="right">'+ setup.get('id') + "</object>"
 
 
 
