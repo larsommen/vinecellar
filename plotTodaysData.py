@@ -72,4 +72,5 @@ plt.gcf().subplots_adjust(top=0.9)
 #plt.gcf().subplots_adjust(right=0.8)
 #save file
 
+
 fig.savefig("/home/pi/winecellar/img/today.png")

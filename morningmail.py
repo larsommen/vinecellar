@@ -10,6 +10,7 @@ import mvfile
 import sys
 import commands
 import bme280
+import datetime
 from email.mime.text import MIMEText #to be used to create mail object
 from subprocess import Popen, PIPE #to send email via gmail
 from email.MIMEMultipart import MIMEMultipart
@@ -84,10 +85,10 @@ body += "<table><tr><td><b>Seneste 24 timers m&aring;linger: </b></td><td><b> Ge
 + "</table><br><br>"
 
 #move todays tmp temp data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.temp")
+#mvfile.move("/home/pi/winecellar/tmpdata/today.temp")
 
 #move todays tmp humid data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.humid")
+#mvfile.move("/home/pi/winecellar/tmpdata/today.humid")
 
 # Create the root message and fill in the from, to, and subject headers
 msgRoot = MIMEMultipart('related')
@@ -105,7 +106,10 @@ msgRoot.attach(msgAlternative)
 msgText = MIMEText('This is the alternative plain text message.')
 msgAlternative.attach(msgText)
 
-body += '<br><img src="cid:image1"><br><br><object align="right">'+ setup.get('id') + "</object>"
+#make destinct id for graph file
+today = datetime.date.today().strftime("%B%d%Y") + setup.get('id')
+
+body += '<br><img src="cid:' + today + '"><br><br><object align="right">'+ setup.get('id') + "</object>"
 
 
 
@@ -119,7 +123,7 @@ msgImage = MIMEImage(fp.read())
 fp.close()
 
 # Define the image's ID as referenced above
-msgImage.add_header('Content-ID', '<image1>')
+msgImage.add_header('Content-ID', '<' + today + '>')
 msgRoot.attach(msgImage)
 
 # Send the email
