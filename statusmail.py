@@ -4,10 +4,12 @@
 import get_user_data
 import sys
 import commands
+import subprocess
+from subprocess import check_output
 import bme280
 from email.mime.text import MIMEText #to be used to create mail opbject
 from subprocess import Popen, PIPE #to send email via gmail
-
+import formatInput
 
 try:
 	# read data from bme280
@@ -61,7 +63,34 @@ body += ipaddress
 
 body += "</br>"
 
-body += uptimeis
+body += uptimeis + "</br>"
+
+body += "</br> Indhold i foldere: </br></br>"
+
+contence = check_output(['ls', '-alg', '/home/pi/winecellar'])
+
+
+contence = formatInput.doTable(contence) 
+
+body += "winecellar: </br>" + contence + "</br></br>"
+
+contence = check_output(['ls', '-alg', '/home/pi/winecellar/img'])
+
+contence = formatInput.doTable(contence)
+
+body += "img: </br>" + contence + "</br></br>"
+
+contence = check_output(['ls', '-alg', '/home/pi/winecellar/tmpdata'])
+
+contence = formatInput.doTable(contence)
+
+body += "tmpdata: </br>" + contence + "</br></br>"
+
+contence = check_output(['df'])
+
+contence = formatInput.doTable(contence)
+
+body += "Diskspace: </br>" + contence + "</br></br>"
 
 
 msg = MIMEText(body, 'html')
