@@ -14,9 +14,9 @@ humid = open("/home/pi/winecellar/tmpdata/today.humid", 'r')
 
 # round values and remove newline chars
 
-temp = [str(round(float(x[:len(x)-1]),1)) for x in temp]
+temp = [round(float(x[:len(x)-1]),1) for x in temp]
 
-humid = [str(round(float(x[:len(x)-1]),1)) for x in humid]
+humid = [round(float(x[:len(x)-1]),1) for x in humid]
 
 #humid = [x[:4] for x in t]
 
@@ -59,7 +59,7 @@ n = 6
 for index, label in enumerate(ax.xaxis.get_ticklabels()):
 	if index % n   != 0 :
     		label.set_visible(False)
-m = 5
+m =1 
 for index, label in enumerate(ax.yaxis.get_ticklabels()):
         if index % m  != 0:
                 label.set_visible(False)
