@@ -117,13 +117,14 @@ body += '<br><img src="cid:' + today + '"><br><br><object align="right">'+ setup
 msgText = MIMEText(body, 'html')
 msgAlternative.attach(msgText)
 
-# This example assumes the image is on the described path
+# This assumes the image is on the described path
 fp = open('/home/pi/winecellar/img/today.png', 'rb')
 msgImage = MIMEImage(fp.read())
 fp.close()
 
 # Define the image's ID as referenced above
 msgImage.add_header('Content-ID', '<' + today + '>')
+
 msgRoot.attach(msgImage)
 
 # Send the email
