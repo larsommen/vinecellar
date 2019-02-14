@@ -38,9 +38,9 @@ t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for 
 
 fig, ax = plt.subplots()
 
-ax.plot(t, temp, label='Temperatur')
-ax.plot(t, humid, label='Luftfugtighed')
-ax.legend(bbox_to_anchor=(0.15, 1.13), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
+ax.plot(t, temp, label='Temperatur ($^\circ$C)')
+ax.plot(t, humid, label='Luftfugtighed (% - relativ)')
+ax.legend(bbox_to_anchor=(0.31, 1.144), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
 
 # set labels
 today = str(datetime.datetime.now().strftime("%d. %m. %Y"))
