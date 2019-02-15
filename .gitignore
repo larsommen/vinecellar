@@ -2,3 +2,4 @@
 *tmpdata/*.humid*
 *tmpdata/*.temp*
 *img/*.png
+*.pyc*
