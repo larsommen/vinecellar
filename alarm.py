@@ -19,14 +19,16 @@ date = commands.getoutput("date")
 
 alert = ''
 
-body = "Fra " + setup.get('customer_name')
+body = "Hej " + setup.get('customer_name')
+
+body += "</br></br></br>Dette er en <b> ALARM </b> fra din vink&aelig;lder</br></br>"
 
 body += '<table>'
 
 body += '<tr>'
 if (temperature > float(setup.get('temp_limit'))):
 	body += "<td>Temperaturen er </td><td><font color = 'red'>" + str(round(temperature,2)) + chr(176) +  "C  </font></td>"	
-	alert += 'OBS temperatur!!!'
+	alert += '</br>OBS temperatur!!!'
 else:
 	body += "<td>Temperaturen er </td><td><font color = 'blue'>" + str(round(temperature,2)) + chr(176) +  "C  </font></td>" 
 
@@ -34,7 +36,7 @@ body += '</tr><tr>'
 
 if (humidity > float(setup.get('humit_limit'))):
 	body += "<td>Luftfugtigheden er </td><td><font color = 'red'>" +  str(round(humidity,1)) + "%</font></td>"
-	alert += " OBS Luftfugtighed!!!"
+	alert += "</br>OBS Luftfugtighed!!!"
 else:
 	body += "<td>Luftfugtigheden er </td><td><font color = 'darkgreen'>" +  str(round(humidity,1)) + "%</font></td>"
 
@@ -43,7 +45,7 @@ body += '<td>'
 
 body += alert
 
-body += '</td><td></tr></table></br></br>'
+body += '</td><td></tr></table></br></br><object align="right">' + setup.get('id') + '</object>'
 
 
 msg = MIMEText(body, 'html')

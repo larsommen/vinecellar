@@ -90,7 +90,7 @@ contence = check_output(['df'])
 
 contence = formatInput.doTable(contence)
 
-body += "Diskspace: </br>" + contence + "</br></br>"
+body += "Diskspace: </br>" + contence + "</br></br>" + '<object align="right">' + setup.get('id') + '</object>'
 
 
 msg = MIMEText(body, 'html')
