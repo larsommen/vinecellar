@@ -85,10 +85,10 @@ body += "<table><tr><td><b>Seneste 24 timers m&aring;linger: </b></td><td><b> Ge
 + "</table><br><br>"
 
 #move todays tmp temp data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.temp")
+mvfileweekday.move("/home/pi/winecellar/tmpdata/today.temp")
 
 #move todays tmp humid data file
-mvfile.move("/home/pi/winecellar/tmpdata/today.humid")
+mvfileweekday.move("/home/pi/winecellar/tmpdata/today.humid")
 
 # Create the root message and fill in the from, to, and subject headers
 msgRoot = MIMEMultipart('related')
