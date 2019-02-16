@@ -40,7 +40,7 @@ fig, ax = plt.subplots()
 
 ax.plot(t, temp, label='Temperatur ($^\circ$C)')
 ax.plot(t, humid, label='Luftfugtighed (%)')
-ax.legend(bbox_to_anchor=(0.21, 1.144), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
+ax.legend(bbox_to_anchor=(0.21, 1.15), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
 
 # set labels
 today = str(datetime.datetime.now().strftime("%d. %m. %Y"))
@@ -68,7 +68,7 @@ for index, label in enumerate(ax.yaxis.get_ticklabels()):
 
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.gcf().subplots_adjust(top=0.9)
+#plt.gcf().subplots_adjust(top=0.8)
 #plt.gcf().subplots_adjust(right=0.8)
 #save file
 
