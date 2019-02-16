@@ -6,7 +6,7 @@
 
 import get_user_data
 import calculateData
-import mvfile
+import mvfileweekday
 import sys
 import commands
 import bme280
