@@ -32,7 +32,7 @@ try:
 #on failure - send error-message-mail
 except Exception as ex:
 	error = str(ex)
-	subprocess.call(['python', 'systemalertmail.py', error])
+	subprocess.call(['python', '/home/pi/winecellar/systemalertmail.py', error])
 
 #log data
 logentry = str(temperature) + "," + str(pressure) + "," + str(humidity) + "," + str(date) + "\n"
