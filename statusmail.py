@@ -11,16 +11,18 @@ from email.mime.text import MIMEText #to be used to create mail opbject
 from subprocess import Popen, PIPE #to send email via gmail
 import formatInput
 
+setup = get_user_data.getall()
+
 try:
 	# read data from bme280
 	temperature,pressure,humidity = bme280.readBME280All()
-
+	temperature = temperature - float(setup.get('setoff_temp'))
+	humidity = humidity * float(setup.get('setoff_hum'))
 #on failure - send error-message-mail
 except Exception as ex:
 	error = str(ex)
 	subprocess.call(['python', 'systemalertmail.py', error])
 
-setup = get_user_data.getall()
 
 #set date to current date
 date = commands.getoutput("date")

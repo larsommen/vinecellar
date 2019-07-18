@@ -27,7 +27,8 @@ setup = get_user_data.getall()
 try:
 	# read data from bme280
 	temperature,pressure,humidity = bme280.readBME280All()
-
+	temperature = temperature - float(setup.get('setoff_temp'))
+	humidity = humidity*float(setup.get('setoff_hum'))
 #on failure - send error-message-mail
 except Exception as ex:
 	error = str(ex)
