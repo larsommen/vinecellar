@@ -4,7 +4,7 @@
 
 import bme280
 import get_user_data
-
+import os
 
 #all imports
 import commands
@@ -62,6 +62,17 @@ except Exception as ex:
         subprocess.call(['python', '/home/pi/winecellar/systemalertmail.py', error])
 
 
+existsTempError = os.path.isfile('/home/pi/winecellar/tmpdata/errorTemp.test')
+existsHumidError = os.path.isfile('/home/pi/winecellar/tmpdata/errorHumid.test')
+
 # test if limits are compromised - send mail
-if temperature > int(setup.get('temp_limit')) or humidity > int(setup.get('humit_limit')):
-	subprocess.call(['python', "/home/pi/winecellar/alarm.py", str(temperature), str(humidity)])
+if not existsTempError and temperature > int(setup.get('temp_limit')):
+	subprocess.call(['python', "/home/pi/winecellar/getLatestTempData.py"])
+	subprocess.call(['python', "/home/pi/winecellar/alarmTemp.py", str(temperature), str(humidity)])
+	subprocess.call(['touch', "/home/pi/winecellar/tmpdata/errorTemp.test"])
+
+
+if not existsHumidError and  humidity > int(setup.get('humit_limit')):
+	subprocess.call(['python', "/home/pi/winecellar/getLatestHumidData.py"]) 
+	subprocess.call(['python', "/home/pi/winecellar/alarmHumid.py", str(temperature), str(humidity)])
+	subprocess.call(['touch', "/home/pi/winecellar/tmpdata/errorHumid.test"])
