@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import commands
-
+import os
 
 
 existsTempError = os.path.isfile('/home/pi/winecellar/tmpdata/errorTemp.test')
