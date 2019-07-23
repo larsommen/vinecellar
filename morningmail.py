@@ -45,7 +45,7 @@ body = '<table>'
 
 body += '<tr>'
 
-greating = "<H1>Godmorgen " + setup.get('customer_name') + "</H1><b>Her er seneste data fra din vink&aelig;lder  </b>"
+greating = "<H1>Godmorgen " + setup.get('customer_name') + "</H1><b>Her er seneste data fra "+ " + setup.get('title') + " </b>"
 
 
 body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
@@ -91,7 +91,7 @@ mvfileweekday.move("/home/pi/winecellar/tmpdata/today.humid")
 
 # Create the root message and fill in the from, to, and subject headers
 msgRoot = MIMEMultipart('related')
-msgRoot['Subject'] = "Godmorgen fra din vinkælder." + " " + date 
+msgRoot['Subject'] = "Godmorgen fra " + setup.get('subj_title') + ". "+ date 
 msgRoot['From'] = setup.get('from_address') 
 msgRoot['To'] = setup.get('customer_mail')
 msgRoot['Bcc'] = setup.get('bcc')

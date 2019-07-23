@@ -39,7 +39,7 @@ body = '<table>'
 
 body += '<tr>'
 
-greating = "<H1>Hej " + setup.get('customer_name') + "</H1><b>Dette er en TEMPERATUR-ALARM fra din vink&aelig;lder  </b>"
+greating = "<H1>Hej " + setup.get('customer_name') + "</H1><b>Dette er en TEMPERATUR-ALARM " + setup.get('title') +  " </b>"
 
 
 body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
@@ -82,7 +82,7 @@ body += "<table><tr><td><b>Seneste timers m&aring;linger: </b></td><td><b> Genne
 
 # Create the root message and fill in the from, to, and subject headers
 msgRoot = MIMEMultipart('related')
-msgRoot['Subject'] = "TEMPERATUR-ALARM fra din vinkælder." + " " + date 
+msgRoot['Subject'] = "TEMPERATUR-ALARM fra " + setup.get('subj_title') + ". " + date 
 msgRoot['From'] = setup.get('from_address') 
 msgRoot['To'] = setup.get('customer_mail')
 msgRoot['Bcc'] = setup.get('bcc')

@@ -101,7 +101,7 @@ msg["To"] = setup.get('customer_mail')
 msg["Bcc"] = setup.get('bcc')
 customername = setup.get('customer_name')
 
-subject = "Status fra " + customername + "'s vinkælder." + " " + date
+subject = "Status fra " + customername + "'s " + setup.get('short_title')+ ". " + date
 msg["Subject"] = subject
 p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE, universal_newlines=True)
 p.communicate(msg.as_string())

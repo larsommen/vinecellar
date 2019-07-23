@@ -26,7 +26,7 @@ msg.attach(attachment)
 
 msg["From"] = setup.get('from_address')
 msg["To"] = setup.get('bcc')
-msg["Subject"] = "Ugentlig log fra " + str(setup.get('customer_name')) + "\'s vinkælder" 
+msg["Subject"] = "Ugentlig log fra " + str(setup.get('customer_name')) + "\'s "+ setup.get('short_title') 
 p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE, universal_newlines=True)
 p.communicate(msg.as_string())
 
