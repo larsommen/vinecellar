@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import get_user_data
-
+plt.switch_backend('agg')
 
 setup = get_user_data.getall()
 
@@ -21,14 +21,14 @@ with open('/home/pi/winecellar/tmpdata/today.humid', 'r') as f:
 		values.append(float(lines[x]))
 
 
-ax.plot(xAxis, values, label='Luftfugtighed (% relativ)', color='coral')
-ax.plot(xAxis, limit, label="Temp limit", color="red")
+ax.plot(values, label='Luftfugtighed (% relativ)', color='coral')
+ax.plot(limit, label="Temp limit", color="red", linewidth=5 )
 plt.xlabel('Timer:minutter')
 plt.ylabel('%')
 plt.title('Trend seneste 2 timer')
 ax.legend(bbox_to_anchor=(0.31, 1.15), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
-
-plt.show()
+ax.set_xticklabels(xAxis, minor=False)
+#plt.show()
 
 
 plt.savefig('/home/pi/winecellar/img/trendingHumid.png')

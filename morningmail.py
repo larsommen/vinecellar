@@ -45,7 +45,7 @@ body = '<table>'
 
 body += '<tr>'
 
-greating = "<H1>Godmorgen " + setup.get('customer_name') + "</H1><b>Her er seneste data fra "+ " + setup.get('title') + " </b>"
+greating = "<H1>Godmorgen " + setup.get('customer_name') + "</H1><b>Her er seneste data fra " + setup.get('title') + " </b>"
 
 
 body += "<td>" + greating + "</td>" + "<td></td> </tr><tr>"
