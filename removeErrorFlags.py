@@ -3,6 +3,7 @@
 
 import commands
 import os
+import subprocess
 
 
 existsTempError = os.path.isfile('/home/pi/winecellar/tmpdata/errorTemp.test')
