@@ -113,7 +113,7 @@ msgImage = MIMEImage(fp.read())
 fp.close()
 
 # Define the image's ID as referenced above
-msgImage.add_header('Content-ID', '<' + today + '>')
+msgImage.add_header('Content-ID', '<T' + today + '>')
 
 msgRoot.attach(msgImage)
 

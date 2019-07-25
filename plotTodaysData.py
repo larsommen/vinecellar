@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
 mpl.rcParams.update({'font.size': 10})
+plt.switch_backend('agg')
+
 
 # open the text file and create arrays of temperature and humidity
 
@@ -38,8 +40,8 @@ t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for 
 
 fig, ax = plt.subplots()
 
-ax.plot(t, temp, label='Temperatur ($^\circ$C)')
-ax.plot(t, humid, label='Luftfugtighed (%)')
+ax.plot(temp, label='Temperatur ($^\circ$C)', color='blue' )
+ax.plot(humid, label='Luftfugtighed (%)', color='coral')
 ax.legend(bbox_to_anchor=(0.21, 1.15), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
 
 # set labels
@@ -68,9 +70,8 @@ for index, label in enumerate(ax.yaxis.get_ticklabels()):
 
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(bottom=0.15)
-#plt.gcf().subplots_adjust(top=0.8)
-#plt.gcf().subplots_adjust(right=0.8)
-#save file
+ax.set_xticklabels(t, minor=False)
 
+#save file
 
 fig.savefig("/home/pi/winecellar/img/today.png")
