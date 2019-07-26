@@ -78,7 +78,7 @@ body += '</td><td></tr></table></br></br>'
 
 body += alert +"<br><br><br>"
 
-body += "<table><tr><td><b>Seneste 24 timers m&aring;linger: </b></td><td><b> Gennemsnit </b></td><td><b> Minimum </b></td><td><b> Maximum </b><td></tr> \
+body += "<table><tr><td><b>Siden i nat: </b></td><td><b> Gennemsnit </b></td><td><b> Minimum </b></td><td><b> Maximum </b><td></tr> \
 <tr><td>Temperatur</td><td style='background-color:lightgray'>" + avgtemp + "</td><td>" + mintemp + "</td><td style='background-color:lightgray'>" + maxtemp + "</td></tr>" \
 "<tr><td>Luftfugtighed</td><td>" + avghumid + "</td><td style='background-color:lightgray'>" + minhumid + "</td><td>" + maxhumid + "</td></tr>"  \
 + "</table><br><br>"
