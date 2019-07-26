@@ -1,5 +1,6 @@
 # ignore all tmpdata
 *tmpdata/*.humid*
 *tmpdata/*.temp*
+*tmpdata/*.test
 *img/*.png
 *.pyc*
