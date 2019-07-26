@@ -3,6 +3,7 @@
 
 import commands
 import os
+import subprocess
 
 
 existsTempError = os.path.isfile('/home/pi/winecellar/tmpdata/errorTemp.test')
@@ -12,4 +13,4 @@ if existsHumidError:
 	subprocess.call(['rm', '/home/pi/winecellar/tmpdata/errorHumid.test'])
 
 if existsTempError:
-        subprocess.call(['rm', '/home/pi/winecellar/tmpdata/errorTemp.test'])	
+        subprocess.call(['rm', '/home/pi/winecellar/tmpdata/errorTemp.test'])
