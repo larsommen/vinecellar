@@ -33,7 +33,7 @@ with open("/home/pi/winecellar/tmpdata/today.humid", "r") as f:
 	except:
 		print missing
 		if missing > 0:
-			with open(yesterdays, "r") as f:
+			with open(filenameYesterday, "r") as f:
 				try:
                 			lines = f.read().splitlines()
                 			for x in range(1,missing):
