@@ -65,14 +65,15 @@ except Exception as ex:
 existsTempError = os.path.isfile('/home/pi/winecellar/tmpdata/errorTemp.test')
 existsHumidError = os.path.isfile('/home/pi/winecellar/tmpdata/errorHumid.test')
 
+subprocess.call(['python', "/home/pi/winecellar/getLatestTempData.py"])
+subprocess.call(['python', "/home/pi/winecellar/getLatestHumidData.py"])
+
 # test if limits are compromised - send mail
 if not existsTempError and temperature > int(setup.get('temp_limit')):
-	subprocess.call(['python', "/home/pi/winecellar/getLatestTempData.py"])
 	subprocess.call(['python', "/home/pi/winecellar/alarmTemp.py", str(temperature), str(humidity)])
 	subprocess.call(['touch', "/home/pi/winecellar/tmpdata/errorTemp.test"])
 
 
 if not existsHumidError and  humidity > int(setup.get('humit_limit')):
-	subprocess.call(['python', "/home/pi/winecellar/getLatestHumidData.py"]) 
 	subprocess.call(['python', "/home/pi/winecellar/alarmHumid.py", str(temperature), str(humidity)])
 	subprocess.call(['touch', "/home/pi/winecellar/tmpdata/errorHumid.test"])

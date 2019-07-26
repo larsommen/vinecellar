@@ -57,6 +57,7 @@ values = switch
 
 now = datetime.now().strftime("%H:%M")
 
+
 #with open('/home/pi/winecellar/tmpdata/today.humid', 'r') as f:
 #	lines = f.read().splitlines()
 #	for x in range(-7,0):
