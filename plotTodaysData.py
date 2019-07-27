@@ -35,11 +35,9 @@ if (len(temp) != len(humid)):
 initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(temp))
 t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for i in range(len(temp))]
 
-
 #plot values
 
 fig, ax = plt.subplots()
-
 ax.plot(temp, label='Temperatur ($^\circ$C)', color='blue' )
 ax.plot(humid, label='Luftfugtighed (%)', color='coral')
 ax.legend(bbox_to_anchor=(0.21, 1.19), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
@@ -57,10 +55,10 @@ plt.gcf().autofmt_xdate()
 
 # hide some values in labels
 
-n = 6
-for index, label in enumerate(ax.xaxis.get_ticklabels()):
-	if index % n   != 0 :
-    		label.set_visible(False)
+#n = 6
+#for index, label in enumerate(ax.xaxis.get_ticklabels()):
+#	if index % n   != 0 :
+#    		label.set_visible(False)
 m =1 
 for index, label in enumerate(ax.yaxis.get_ticklabels()):
         if index % m  != 0:
