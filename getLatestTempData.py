@@ -18,7 +18,7 @@ setup = get_user_data.getall()
 fig = plt.figure()
 ax = plt.axes()
 values = []
-xAxis = ['-2', '-1:40', "-1:20", "-1", "-0:40", "-0:20","0"]
+xAxis = ['-2:00', '-1:40', "-1:20", "-1:00", "-0:40", "-0:20","0:00"]
 altY = [1,2,3,4,5,6,7]
  
 lim=float(setup.get('temp_limit'))

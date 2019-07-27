@@ -18,7 +18,7 @@ ax = plt.axes()
 lim=float(setup.get('humit_limit'))
 limit = [lim,lim,lim,lim,lim,lim,lim]
 
-xAxis = ["-2", "-1:40", "-1:20", "-1", "-0:40", "-0:20","0"]
+xAxis = ["-2:00", "-1:40", "-1:20", "-1:00", "-0:40", "-0:20","0:00"]
 
 
 missing =8 
