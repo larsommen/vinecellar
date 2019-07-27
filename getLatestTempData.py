@@ -38,7 +38,6 @@ with open("/home/pi/winecellar/tmpdata/today.temp", "r") as f:
 			values.append(float(lines[-x]))
 			missing = missing -1
 	except:
-		print missing
 		if missing > 0:
 			with open(filenameYesterday, "r") as f:
 				try:
