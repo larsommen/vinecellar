@@ -33,7 +33,9 @@ if (len(temp) != len(humid)):
 # set up x-axis from start time til now with the number of intervals in the temp and humid arrays
 
 initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(temp))
-t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for i in range(len(temp))]
+initialDatetime = initialDatetime.replace(hour=3, minute=40)
+t = [(initialDatetime + datetime.timedelta(minutes=i*20*10.5)).strftime('%H:%M') for i in range(len(temp)/9)]
+t.append("03:40")
 
 #plot values
 
@@ -59,16 +61,18 @@ plt.gcf().autofmt_xdate()
 #for index, label in enumerate(ax.xaxis.get_ticklabels()):
 #	if index % n   != 0 :
 #    		label.set_visible(False)
-m =1 
-for index, label in enumerate(ax.yaxis.get_ticklabels()):
-        if index % m  != 0:
-                label.set_visible(False)
+#m =1 
+#for index, label in enumerate(ax.yaxis.get_ticklabels()):
+        #if index % m  != 0:
+        #        label.set_visible(False)
 
 # posistion plot and label in visible area
 
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(top=0.84)
-ax.set_xticklabels(t, minor=False)
+ax.set_xticklabels(t)
+#ax.set_xticklabels(t, minor=False)
+
 
 #save file
 
