@@ -24,9 +24,6 @@ altY = [1,2,3,4,5,6,7]
 lim=float(setup.get('temp_limit'))
 limit = [lim,lim,lim,lim,lim,lim,lim]
 
-yesterdays = open(filenameYesterday, "r")
-todays = open('/home/pi/winecellar/tmpdata/today.temp', 'r')
-
 
 missing =8 
 values =[]
