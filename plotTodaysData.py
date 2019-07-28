@@ -34,8 +34,10 @@ if (len(temp) != len(humid)):
 
 initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(temp))
 initialDatetime = initialDatetime.replace(hour=3, minute=40)
-t = [(initialDatetime + datetime.timedelta(minutes=i*20*10.5)).strftime('%H:%M') for i in range(len(temp)/9)]
-t.append("03:40")
+t = [(initialDatetime + datetime.timedelta(minutes=i*20*3*3.428)).strftime('%H:%M') for i in range(len(temp)/3)]
+
+t= t[:8]
+
 
 #plot values
 
