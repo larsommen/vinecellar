@@ -15,8 +15,7 @@ filenameYesterday= "/home/pi/winecellar/tmpdata/today.temp" + weekday
 
 setup = get_user_data.getall()
 
-fig = plt.figure()
-ax = plt.axes()
+fig, ax = plt.subplots()
 values = []
 xAxis = ['-2:00', '-1:40', "-1:20", "-1:00", "-0:40", "-0:20","0:00"]
 altY = [1,2,3,4,5,6,7]
@@ -66,8 +65,11 @@ plt.ylabel('$^\circ$C')
 plt.title('Trend seneste 2 timer -- '+ now )
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(top=0.84)
-ax.legend(bbox_to_anchor=(0.24, 1.19), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
-ax.set_xticklabels(xAxis, minor=False)
 
+
+ax.legend(bbox_to_anchor=(0.24, 1.19), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
+
+ax.set_xticks(range(len(xAxis)))
+ax.set_xticklabels(xAxis)
 
 plt.savefig('/home/pi/winecellar/img/trendingTemp.png')
