@@ -34,10 +34,10 @@ if (len(temp) != len(humid)):
 
 initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(temp))
 initialDatetime = initialDatetime.replace(hour=3, minute=40)
-t = [(initialDatetime + datetime.timedelta(minutes=i*20*3*3.428)).strftime('%H:%M') for i in range(len(temp)/3)]
+t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for i in range(len(temp))]
 
-t= t[:8]
 
+print t
 
 #plot values
 
@@ -72,10 +72,17 @@ plt.gcf().autofmt_xdate()
 
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(top=0.84)
+ax.set_xticks(range(len(t)-2))
 ax.set_xticklabels(t)
 #ax.set_xticklabels(t, minor=False)
 
+n = 5 
+for index, label in enumerate(ax.xaxis.get_ticklabels()):
+       if index % n   != 0 and index != len(t)-3 :
+               label.set_visible(False)
+
+ax.margins(x=0)
 
 #save file
 
-fig.savefig("/home/pi/winecellar/img/today.png")
+fig.savefig("/home/pi/winecellar/img/today.png", bbox_inches='tight',pad_inches = 0, dpi = 200)
