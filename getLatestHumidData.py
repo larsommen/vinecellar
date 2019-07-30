@@ -13,8 +13,8 @@ weekdaynumber = datetime.utcnow().isocalendar()[2]
 weekday = str(weekdaynumber)
 filenameYesterday= "/home/pi/winecellar/tmpdata/today.humid" + weekday
 
-fig = plt.figure()
-ax = plt.axes()
+fig, ax = plt.subplots()
+
 lim=float(setup.get('humit_limit'))
 limit = [lim,lim,lim,lim,lim,lim,lim]
 
@@ -63,6 +63,7 @@ now = datetime.now().strftime("%H:%M")
 
 
 ax.plot(values, label='Luftfugtighed (% relativ)', color='coral', linewidth=2)
+
 ax.plot(limit, label="Fugt limit", color="red", linewidth=5 )
 plt.xlabel('Timer:minutter')
 plt.ylabel('%')
@@ -70,8 +71,8 @@ plt.title('Trend seneste 2 timer -- ' + now)
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(top=0.84)
 ax.legend(bbox_to_anchor=(0.36, 1.2), loc=1, borderaxespad=0, fancybox=True, framealpha=0.5)
-ax.set_xticklabels(xAxis, minor=False)
-#plt.show()
 
+ax.set_xticks(range(len(xAxis)))
+ax.set_xticklabels(xAxis)
 
 plt.savefig('/home/pi/winecellar/img/trendingHumid.png')
