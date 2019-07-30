@@ -9,7 +9,6 @@ def move(filename):
 	weekday = str(weekdaynumber)
 	src = filename
 	dst = filename + weekday
-	print dst
 	if os.path.isfile(src):
 	    os.rename(src, dst)
 	return dst
