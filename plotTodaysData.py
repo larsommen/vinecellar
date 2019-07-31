@@ -33,7 +33,7 @@ if (len(temp) != len(humid)):
 # set up x-axis from start time til now with the number of intervals in the temp and humid arrays
 
 initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(temp))
-initialDatetime = initialDatetime.replace(hour=3, minute=40)
+initialDatetime = initialDatetime.replace(hour=4, minute=0)
 t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for i in range(len(temp))]
 
 #plot values
