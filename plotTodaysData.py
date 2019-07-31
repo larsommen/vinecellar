@@ -36,9 +36,6 @@ initialDatetime = datetime.datetime.now() - datetime.timedelta(minutes=20*len(te
 initialDatetime = initialDatetime.replace(hour=3, minute=40)
 t = [(initialDatetime + datetime.timedelta(minutes=i*20)).strftime('%H:%M') for i in range(len(temp))]
 
-
-print t
-
 #plot values
 
 fig, ax = plt.subplots()
@@ -57,25 +54,14 @@ ax.set(xlabel='Klokkeslet',
 ax.grid()
 plt.gcf().autofmt_xdate()
 
-# hide some values in labels
-
-#n = 6
-#for index, label in enumerate(ax.xaxis.get_ticklabels()):
-#	if index % n   != 0 :
-#    		label.set_visible(False)
-#m =1 
-#for index, label in enumerate(ax.yaxis.get_ticklabels()):
-        #if index % m  != 0:
-        #        label.set_visible(False)
-
-# posistion plot and label in visible area
-
 plt.gcf().subplots_adjust(left=0.12)
 plt.gcf().subplots_adjust(top=0.84)
 ax.set_xticks(range(len(t)-2))
 ax.set_xticklabels(t)
 #ax.set_xticklabels(t, minor=False)
 
+
+# hide some values in labels
 n = 5 
 for index, label in enumerate(ax.xaxis.get_ticklabels()):
        if index % n   != 0 and index != len(t)-3 :
