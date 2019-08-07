@@ -4,3 +4,4 @@
 *tmpdata/*.test
 *img/*.png
 *.pyc*
+*.pyc
