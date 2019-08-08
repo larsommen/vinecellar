@@ -97,7 +97,7 @@ msgText = MIMEText('This is the alternative plain text message.')
 msgAlternative.attach(msgText)
 
 #make destinct id for graph file
-today = datetime.date.today().strftime("%B%d%Y%H") + setup.get('id') + "H"
+today = datetime.datetime.now().strftime("%d%m%Y-%H%M%S") + setup.get('id') + "H"
 
 body += '<br><img src="cid:' + today + '"><br><br><object align="right">'+ setup.get('id') + "</object>"
 
