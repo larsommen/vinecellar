@@ -97,8 +97,7 @@ body += "Diskspace: </br>" + contence + "</br></br>" + '<object align="right">' 
 
 msg = MIMEText(body, 'html')
 msg["From"] = setup.get('from_address')
-msg["To"] = setup.get('customer_mail')
-msg["Bcc"] = setup.get('bcc')
+msg["To"] = setup.get('bcc')
 customername = setup.get('customer_name')
 
 subject = "Status fra " + customername + "'s " + setup.get('short_title')+ ". " + date
