@@ -5,4 +5,4 @@ This project will using the i2c on a raspberry pi, check temperature and humidit
 In case of a file-io or a sensor-error a mail will be created and send to the sys-admin
 
 Version history:
-ver. 0.9 (current) - works as described above - look at the wiki for further detail.
+ver. 0.95  (current) - works as described above - look at the wiki for further detail.
